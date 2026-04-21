@@ -1,0 +1,54 @@
+framework:
+  name: ai-sdlc
+  version: "0.1.0"
+  installed_at: "2026-04-20"
+  install_mode: local-poc
+
+workspace:
+  name: "GanzApps"
+  project: "The Greatest Hello World"
+  initialized: true
+  initialized_at: "2026-04-20"
+
+executors:
+  primary: claude-code
+  fallback: codex
+  zero_cost: opencode
+
+connectors:
+  docs:
+    required: true
+    status: connected
+  tickets:
+    required: true
+    status: connected
+  code:
+    required: false
+    status: not-configured
+  design:
+    required: true
+    status: connected
+
+framework_managed:
+  - .ai-sdlc/
+
+workspace_local:
+  - .agent-config.yml
+  - knowledge/
+  - artifacts/
+  - source-code/
+
+capabilities:
+  enabled_agents:
+    - product-agent
+    - design-agent
+    - techplan-agent
+    - planner-agent
+    - engineer-agent
+    - incident-engineer-agent
+    - devops-agent
+
+setup:
+  delivery_record_store: docs
+  design_baseline_known: false
+  setup_status: ready

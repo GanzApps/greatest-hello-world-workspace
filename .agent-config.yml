@@ -1,0 +1,51 @@
+version: "1.0"
+
+workspace:
+  name: "GanzApps"
+  project: "The Greatest Hello World"
+
+connectors:
+  docs:
+    tool: notion
+    url: "https://www.notion.so/3485215e92e4807eb290c83b8905eff0"
+    mcp_url: "claude-ai-notion"
+    status: connected
+
+  tickets:
+    tool: notion
+    url: "https://www.notion.so/7f115b349ccd450cb0bdf218d288cb00"
+    mcp_url: "claude-ai-notion"
+    mcp_command: ""
+    data_source_id: "collection://84c53d9c-f3f0-4375-9168-7645a4ed808a"
+    status: connected
+
+  code:
+    tool: github
+    # workspace repo — AI SDLC artifacts and knowledge (tghw_workspace)
+    url: "https://github.com/GanzApps/greatest-hello-world-workspace"
+    mcp_url: ""
+    default_branch: "main"
+    status: connected
+    # service repos resolved from System Catalog, not declared here
+    catalog_url: "https://www.notion.so/3485215e92e481a39ddffdea84e8d72d"
+
+  design:
+    tool: google-stitch
+    url: "https://stitch.withgoogle.com"
+    mcp_url: "https://stitch.googleapis.com/mcp"
+    status: connected
+
+executor:
+  primary:
+    tool: claude-code
+    model: claude-sonnet-4-6
+  fallback:
+    tool: codex
+    model: gpt-5.4
+  zero_cost:
+    tool: opencode
+    model: "deepseek/deepseek-chat"
+
+handoff:
+  store: docs
+  folder: "AI-SDLC / Handoffs"

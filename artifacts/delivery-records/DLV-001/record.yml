@@ -1,0 +1,72 @@
+id: DLV-001
+title: The Greatest Hello World
+type: new-product
+status: ready
+current_phase: execution
+work_mode: new-product
+
+workspace:
+  company: GanzApps
+  project: The Greatest Hello World
+
+source:
+  intake_type: prd
+  intake_url: https://www.notion.so/3485215e92e4815ca6d7f25af0558377
+
+artifacts:
+  delivery_record_url: ""
+  prd_url: https://www.notion.so/3485215e92e4815ca6d7f25af0558377
+  design_baseline_url: "https://stitch.withgoogle.com/projects/6486480116347050403"
+  design_spec_url: "https://stitch.withgoogle.com/projects/6486480116347050403/screens/1734fffdbce44de88b3e50900c88ee24"
+  techplan_url: "https://www.notion.so/3485215e92e4817591d3dc14e707d92b"
+  tickets_url: https://www.notion.so/7f115b349ccd450cb0bdf218d288cb00
+  code_urls:
+    - https://github.com/GanzApps/greatest-hello-world
+    - https://github.com/GanzApps/greatest-hello-world-workspace
+  evidence_urls: []
+  deploy_url: ""
+
+readiness:
+  connectors:
+    docs: connected
+    tickets: connected
+    code: not-configured
+    design: connected
+  design_baseline_status: created
+  setup_status: ready
+  execution_status: ready
+
+context:
+  summary: >
+    Single-page Hello World webapp. Cinematic animation, dynamic background,
+    interactive elements. Vanilla HTML/CSS/JS. Optional Three.js or GSAP.
+  assumptions:
+    - No backend required, static site deployment
+    - Target modern evergreen browsers only
+    - prefers-reduced-motion fallback required
+  decisions:
+    - PRD approved by human on 2026-04-20
+  - Design approved by human on 2026-04-20
+  risks:
+    - Animation performance on low-end devices — mitigate with reduced-motion fallback
+    - Over-engineering scope creep — timebox phases strictly
+    - Browser compatibility — evergreen only
+  blockers: []
+
+ownership:
+  current_role: engineer-agent
+  next_role: devops-agent
+  approver: human
+
+milestones:
+  initiation: done
+  product_definition: done
+  design_baseline: done
+  feature_design: done
+  technical_design: done  # stack revised 2026-04-20: Next.js + R3F + Drei + Framer Motion + Tailwind + pnpm + Netlify
+  planning: done
+  execution: pending
+  verification: pending
+  release_deploy: pending
+
+updated_at: "2026-04-20"
