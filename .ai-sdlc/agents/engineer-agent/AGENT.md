@@ -195,9 +195,10 @@ Each command executes **one step only**. Stop after completing the step and wait
 1. Claim the specified ready ticket (set status to `In Progress`)
 2. Create working branch, implement code, run tests
 3. **For `[FE]` / `[UI]` tickets — run Pre-PR Design Review before opening PR:**
-   - Fetch live design source (Stitch screen HTML + screenshot, or Figma frame)
-   - List every visual property: background, colors, gradients, fonts, font weights, animations, layout
-   - For each property — confirm implementation matches the design source-of-truth, not just the tech spec
+   - Fetch raw design HTML using `mcp__stitch__get_screen` → copy `htmlCode.downloadUrl` → `curl -s "<url>"` to get exact markup
+   - **Never use WebFetch on design URLs — it summarizes and loses critical detail (classes, exact colors, shadow values, token usage)**
+   - Read every element's exact Tailwind classes and inline styles from the raw HTML — do not guess or infer
+   - For every design token (color, spacing, font) — find where it appears in the raw markup before concluding it is "unused"
    - For canvas/WebGL contexts — confirm every CSS asset (font, gradient, color) is converted to a WebGL equivalent (see `knowledge/engineering/webgl-canvas-css-gap.md`)
    - Fix all gaps before opening PR — do not open PR with known visual mismatches
    - If design source is unreachable — set ticket to `Blocked`, do not open PR on assumption
